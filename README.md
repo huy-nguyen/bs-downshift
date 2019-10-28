@@ -1,4 +1,9 @@
-# new-bs-downshift
+# bs-downshift
+
+This is a demo of [`downshift`](https://github.com/downshift-js/downshift)'s ReasonML bindings.
+It also ports the first [two ordered examples](https://github.com/downshift-js/downshift#examples) found in `downshift`'s documentation.
+- Go to `/basic-autocomplete` to see the "basic autocomplete" example.
+- Go to `/complete-autocomplete` to see the "styled autocompete" example.
 
 ## Run Project
 
