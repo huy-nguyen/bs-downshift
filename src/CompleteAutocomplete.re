@@ -30,16 +30,16 @@ let make = () => {
     let toggle =
       switch (getSelectedItem(stateAndHelpers)->Js.Nullable.toOption) {
       | Some(_) =>
-          <button
-            className=SharedStyles.controllerButton
-            onClick={_ => clearSelection(stateAndHelpers)}
-            ariaLabel="clear selection">
-            <Shared.XIcon />
-          </button>
+        <button
+          className=SharedStyles.controllerButton
+          onClick={_ => clearSelection(stateAndHelpers)}
+          ariaLabel="clear selection">
+          <Shared.XIcon />
+        </button>
       | None =>
         spreadDownshiftProps(
           <button className=SharedStyles.controllerButton>
-            <Shared.ArrowIcon isOpen/>
+            <Shared.ArrowIcon isOpen />
           </button>,
           toggleProps,
         )
@@ -80,7 +80,9 @@ let make = () => {
             );
           })
       };
-    let menuClassName = getIsOpen(stateAndHelpers) ? SharedStyles.baseMenu : SharedStyles.hiddenMenu;
+    let menuClassName =
+      getIsOpen(stateAndHelpers)
+        ? SharedStyles.baseMenu : SharedStyles.hiddenMenu;
     let menu =
       spreadDownshiftProps(
         <ul className=menuClassName> {React.array(itemElems)} </ul>,

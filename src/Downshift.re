@@ -1,4 +1,3 @@
-
 module StateAndHelpers = {
   type t;
 
@@ -32,10 +31,9 @@ module StateAndHelpers = {
     index: int,
     [@bs.optional]
     disabed: bool,
-
     /* TODO: find a way to avoid specifying React's built-in props explicitly*/
     [@bs.optional]
-    key: string
+    key: string,
   };
   [@bs.deriving abstract]
   type toggleButtonMainParams = {
@@ -86,10 +84,13 @@ module StateAndHelpers = {
     "getToggleButtonProps";
 
   /* state */
-  [@bs.get] external getHighglightedIndex: t => Js.Nullable.t('item) = "highglightedIndex";
+  [@bs.get]
+  external getHighglightedIndex: t => Js.Nullable.t('item) =
+    "highglightedIndex";
   [@bs.get] external getInputValue: t => Js.Nullable.t(string) = "inputValue";
   [@bs.get] external getIsOpen: t => bool = "isOpen";
-  [@bs.get] external getSelectedItem: t => Js.Nullable.t('item) = "selectedItem";
+  [@bs.get]
+  external getSelectedItem: t => Js.Nullable.t('item) = "selectedItem";
 
   /* actions */
   [@bs.send] external clearSelection: t => unit = "clearSelection";
@@ -99,7 +100,6 @@ module StateAndHelpers = {
   /* Not part of the JS API. Provided as helper because JSX in Reason doesn't support prop spreading */
   let spreadDownshiftProps = (element: React.element, props: propGetterOutput) =>
     ReasonReact.cloneElement(element, ~props=Obj.magic(props), [||]);
-
 };
 
 type renderer('item) = StateAndHelpers.t => React.element;
@@ -109,15 +109,13 @@ type changeHandler('item) =
 
 [@bs.module "downshift"] [@react.component]
 external make:
+  /* Basic props: */
   (
-    /* Basic props: */
     ~children: renderer('item),
     ~itemToString: Js.Nullable.t('item) => string=?,
     ~onChange: changeHandler('item)=?,
-
     /* Control props */
     ~isOpen: bool=?,
-
     /* Advanced props: */
     ~initialSelectedItem: Js.Nullable.t('item)=?
   ) =>

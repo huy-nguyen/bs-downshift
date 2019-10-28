@@ -17,6 +17,10 @@ type functionKeys('a) = {keys: array('a => string)};
 
 [@bs.module "match-sorter"]
 external matchSortByFunctionKeys:
-  (~collection: array('element), ~searchPhrase: string, ~keys: functionKeys('element)) =>
+  (
+    ~collection: array('element),
+    ~searchPhrase: string,
+    ~keys: functionKeys('element)
+  ) =>
   array('element) =
   "default";

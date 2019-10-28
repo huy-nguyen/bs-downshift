@@ -40,40 +40,36 @@ let make = () => {
           | None
           | Some("") => items
           | Some(inputValue) =>
-              items->Belt.Array.keep(item =>
-                Js.String.includes(inputValue, item.value)
-              )
+            items->Belt.Array.keep(item =>
+              Js.String.includes(inputValue, item.value)
+            )
           };
         let itemElems =
-          filteredItems -> Belt.Array.mapWithIndex((index, {value} as item) => {
-              let itemProps =
-                getItemProps(
-                  stateAndHelpers,
-                  ~mainParams=
-                    itemMainParams(~item, ~key=value, ~index, ()),
-                );
-              let backgroundColor =
-                switch (
-                  getHighglightedIndex(stateAndHelpers)->Js.Nullable.toOption
-                ) {
-                | Some(highlightedIndex) =>
-                  highlightedIndex == index ? "lightgray" : ""
-                | None => ""
-                };
-              let fontWeight =
-                switch (
-                  getSelectedItem(stateAndHelpers)->Js.Nullable.toOption
-                ) {
-                | Some(selectedItem) =>
-                  selectedItem == item ? "bold" : "normal"
-                | None => ""
-                };
-              let style =
-                ReactDOMRe.Style.make(~backgroundColor, ~fontWeight, ());
-              spreadDownshiftProps(
-                <li style> {React.string(item.value)} </li>,
-                itemProps,
+          filteredItems->Belt.Array.mapWithIndex((index, {value} as item) => {
+            let itemProps =
+              getItemProps(
+                stateAndHelpers,
+                ~mainParams=itemMainParams(~item, ~key=value, ~index, ()),
               );
+            let backgroundColor =
+              switch (
+                getHighglightedIndex(stateAndHelpers)->Js.Nullable.toOption
+              ) {
+              | Some(highlightedIndex) =>
+                highlightedIndex == index ? "lightgray" : ""
+              | None => ""
+              };
+            let fontWeight =
+              switch (getSelectedItem(stateAndHelpers)->Js.Nullable.toOption) {
+              | Some(selectedItem) => selectedItem == item ? "bold" : "normal"
+              | None => ""
+              };
+            let style =
+              ReactDOMRe.Style.make(~backgroundColor, ~fontWeight, ());
+            spreadDownshiftProps(
+              <li style> {React.string(item.value)} </li>,
+              itemProps,
+            );
           });
         spreadDownshiftProps(<ul> {React.array(itemElems)} </ul>, menuProps);
       } else {
