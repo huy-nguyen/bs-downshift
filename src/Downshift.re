@@ -85,8 +85,8 @@ module StateAndHelpers = {
 
   /* state */
   [@bs.get]
-  external getHighglightedIndex: t => Js.Nullable.t('item) =
-    "highglightedIndex";
+  external getHighlightedIndex: t => Js.Nullable.t('item) =
+    "highlightedIndex";
   [@bs.get] external getInputValue: t => Js.Nullable.t(string) = "inputValue";
   [@bs.get] external getIsOpen: t => bool = "isOpen";
   [@bs.get]

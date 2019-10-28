@@ -57,7 +57,7 @@ let make = () => {
               );
             let isActive =
               switch (
-                getHighglightedIndex(stateAndHelpers)->Js.Nullable.toOption
+                getHighlightedIndex(stateAndHelpers)->Js.Nullable.toOption
               ) {
               | Some(highlightedIndex) => highlightedIndex == index
               | None => false

@@ -53,7 +53,7 @@ let make = () => {
               );
             let backgroundColor =
               switch (
-                getHighglightedIndex(stateAndHelpers)->Js.Nullable.toOption
+                getHighlightedIndex(stateAndHelpers)->Js.Nullable.toOption
               ) {
               | Some(highlightedIndex) =>
                 highlightedIndex == index ? "lightgray" : ""
