@@ -2,7 +2,7 @@
 
 [@react.component]
 let make = () => {
-  open Downshift;
+  // open Downshift;
 
   let render = (stateAndHelpers: Downshift.StateAndHelpers.t) => {
     open Downshift.StateAndHelpers;
