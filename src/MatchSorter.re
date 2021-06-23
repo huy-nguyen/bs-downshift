@@ -1,7 +1,7 @@
 [@bs.module "match-sorter"]
 external matchSort:
   (~collection: array(string), ~searchPhrase: string) => array(string) =
-  "default";
+  "matchSorter";
 
 [@bs.deriving abstract]
 type stringKeys = {keys: array(string)};
@@ -10,7 +10,7 @@ type stringKeys = {keys: array(string)};
 external matchSortByStringKeys:
   (~collection: array('element), ~searchPhrase: string, ~keys: stringKeys) =>
   array('element) =
-  "default";
+  "matchSorter";
 
 [@bs.deriving abstract]
 type functionKeys('a) = {keys: array('a => string)};
@@ -23,4 +23,4 @@ external matchSortByFunctionKeys:
     ~keys: functionKeys('element)
   ) =>
   array('element) =
-  "default";
+  "matchSorter";

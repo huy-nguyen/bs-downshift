@@ -49,9 +49,9 @@ module Styles = {
         ~bottom=`rem(1.0),
         ~left=`rem(1.0),
       ),
-      color(`rgba((0, 0, 0, 0.87))),
+      color(`rgba((0, 0, 0, `num(0.87)))),
       boxShadow(`none),
-      border(`px(1), `solid, `rgba((34, 36, 38, 0.15))),
+      border(`px(1), `solid, `rgba((34, 36, 38, `num(0.15)))),
       borderRadius(`rem(0.30)),
     ]);
 
@@ -109,7 +109,7 @@ module Styles = {
       textAlign(`left),
       borderTopWidth(`zero),
       lineHeight(`rem(1.)),
-      color(`rgba((0, 0, 0, 0.87))),
+      color(`rgba((0, 0, 0, `num(0.87)))),
       fontSize(`rem(1.)),
       textTransform(`none),
       fontWeight(`normal),
@@ -123,12 +123,12 @@ module Styles = {
     let activeStyle =
       isActive
         ? style([
-            color(`rgba((0, 0, 0, 0.95))),
-            background(`rgba((0, 0, 0, 0.03))),
+            color(`rgba((0, 0, 0, `num(0.95)))),
+            background(`rgba((0, 0, 0, `num(0.03)))),
           ])
         : style([]);
     let selectedStyle =
-      isSelected ? style([color(`rgba((0, 0, 0, 0.95)))]) : style([]);
+      isSelected ? style([color(`rgba((0, 0, 0, `num(0.95))))]) : style([]);
     merge([itemBase, activeStyle, selectedStyle]);
   };
 };
